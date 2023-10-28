@@ -1,26 +1,50 @@
 #!/bin/bash
 
+#package manager (as default apt)
+pkgm="apt"
+release_name=$(cat /etc/os-release | grep PRETTY_NAME | cut -d= -f2-)
+
 # Check if the script is run as root
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root"
    exit 1
 fi
 
+# Check the distro
+if [[ -f /etc/os-release ]]; then
+   echo "Distribution: $release_name"
+
+   if echo "$release_name" | grep -qi "ubuntu"; then
+      pkgm="apt"
+   elif echo "$release_name" | grep -qi "debian"; then
+      pkgm="apt"
+   elif echo "$release_name" | grep -qi "centos"; then
+      pkgm="rpm"
+   elif echo "$release_name" | grep -qi "fedora"; then
+      pkgm="yum"
+   else
+      echo "This distribution is not specifically recognized."
+   fi
+else
+   echo "Unable to determine Linux distribution. Using default package manager as 'apt'"
+fi
+
+
 # Update package lists
 echo "Updating package lists..."
-apt update
+$pkgm update
 
 # Upgrade existing packages
 echo "Upgrading existing packages..."
-apt upgrade -y
+$pkgm upgrade -y
 
 # Install basic build tools
 echo "Installing basic build tools..."
-apt install -y build-essential curl wget git vim tmux htop unzip
+$pkgm install -y build-essential curl wget git vim tmux htop unzip
 
 # Install Python and pip
 echo "Installing Python3 and pip..."
-apt install -y python3 python3-pip python3-venv
+$pkgm install -y python3 python3-pip python3-venv
 
 # Install Python dev tools and libraries
 echo "Installing Python dev tools..."
@@ -33,32 +57,31 @@ pip3 install tensorflow keras pytorch scikit-image opencv-python jupyterlab seab
 # Install Node.js
 echo "Installing Node.js..."
 curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-apt install -y nodejs
+$pkgm install -y nodejs
 
 # Install Java
 echo "Installing Java..."
-apt install -y openjdk-11-jdk
+$pkgm install -y openjdk-11-jdk
 
 # Install Docker
 echo "Installing Docker..."
-apt install -y apt-transport-https ca-certificates curl software-properties-common
+$pkgm install -y apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-apt update
-apt install -y docker-ce
+$pkgm update
+$pkgm install -y docker-ce
 
 # Install MySQL client
 echo "Installing MySQL client..."
-apt install -y mysql-client
+$pkgm install -y mysql-client
 
 # Install PostgreSQL client
 echo "Installing PostgreSQL client..."
-apt install -y postgresql-client
+$pkgm install -y postgresql-client
 
 # Install additional useful tools
 echo "Installing additional useful tools..."
-apt install -y tree ncdu
+$pkgm install -y tree ncdu
 
 # Complete
 echo "Setup completed!"
-
