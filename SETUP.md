@@ -28,6 +28,17 @@ To copy the script to a remote machine, execute the following:
 scp -i "path/to/your.pem" "path/to/setup.sh" username@remote_address:/path/to/remote/directory
 ```
 
+To copy for home:
+```bash
+scp -i "path/to/your.pem" "path/to/setup.sh" username@remote_address:~
+```
+
+or
+
+```bash
+scp -i "path/to/your.pem" "path/to/setup.sh" username@remote_address:/home/ec2-user/setup.sh
+```
+
 To SSH into the remote machine:
 
 ```bash
@@ -39,6 +50,14 @@ Then execute the following commands to run the script:
 ```bash
 chmod +x setup.sh
 sudo ./setup.sh
+```
+
+
+- Note: When transferring and running scripts between different operating systems, it's important to ensure compatibility, especially regarding newline characters, as these can cause scripts to fail in unexpected ways. The `dos2unix` utility is one of the simplest ways to convert file formats from Windows-style to Unix-style line endings.
+
+```
+sudo yum install dos2unix
+dos2unix setup.sh
 ```
 
 ## What Does The Script Do?
@@ -93,6 +112,7 @@ sudo ./setup.sh
 - nltk
 - spacy
 - gensim
+- note
 
 ### Other Tools
 
