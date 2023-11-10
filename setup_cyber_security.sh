@@ -185,6 +185,9 @@ $pkgm install -y cockpit
 echo "Installing Snap and Flatpak..."
 $pkgm install -y snapd flatpak
 
+# Install PyAudio and its dependencies
+echo "Installing PyAudio and PortAudio..."
+$pkgm install -y python3-pyaudio portaudio19-dev
 
 # Complete
 echo "Setup completed!"
