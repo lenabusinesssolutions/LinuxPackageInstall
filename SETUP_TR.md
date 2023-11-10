@@ -34,6 +34,7 @@ Uzaktaki makineye SSH ile bağlanmak için:
 ssh -i "path/to/your.pem" username@remote_address
 ```
 
+
 Sonra scripti çalıştırmak için aşağıdaki komutları çalıştırın:
 
 ```bash
