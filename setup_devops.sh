@@ -137,5 +137,13 @@ $pkgm install -y azure-cli
 echo "Installing Google Cloud SDK..."
 $pkgm install -y google-cloud-sdk
 
+# Install NVIDIA drivers
+echo "Installing NVIDIA drivers..."
+$pkgm install -y nvidia-driver
+
+# Install nvidia-smi
+echo "Installing nvidia-smi..."
+$pkgm install -y nvidia-smi
+
 # Complete
 echo "Setup completed!"
