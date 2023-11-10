@@ -145,5 +145,46 @@ $pkgm install -y nvidia-driver
 echo "Installing nvidia-smi..."
 $pkgm install -y nvidia-smi
 
+# Web Development Tools
+echo "Installing Nginx and Apache..."
+$pkgm install -y nginx apache2
+
+# Security Tools
+echo "Installing ClamAV and Lynis..."
+$pkgm install -y clamav lynis
+
+# Network Tools
+echo "Installing Wireshark and tcpdump..."
+$pkgm install -y wireshark tcpdump
+
+# Container Orchestration
+echo "Installing Kubernetes CLI (kubectl) and minikube..."
+$pkgm install -y kubectl minikube
+
+# Performance Monitoring Tools
+echo "Installing Telegraf and InfluxDB..."
+$pkgm install -y telegraf influxdb
+
+# Virtualization Tools
+echo "Installing QEMU and KVM..."
+$pkgm install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
+
+# Version Control Systems
+echo "Installing Mercurial and SVN..."
+$pkgm install -y mercurial subversion
+
+# Testing Tools
+echo "Installing Selenium and SoapUI..."
+$pkgm install -y selenium soapui
+
+# System Management Tools
+echo "Installing Cockpit..."
+$pkgm install -y cockpit
+
+# Software Packaging Tools
+echo "Installing Snap and Flatpak..."
+$pkgm install -y snapd flatpak
+
+
 # Complete
 echo "Setup completed!"
