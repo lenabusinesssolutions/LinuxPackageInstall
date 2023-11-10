@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 #package manager (as default apt)
@@ -28,7 +29,6 @@ if [[ -f /etc/os-release ]]; then
 else
    echo "Unable to determine Linux distribution. Using default package manager as 'apt'"
 fi
-
 
 # Update package lists
 echo "Updating package lists..."
@@ -82,6 +82,60 @@ $pkgm install -y postgresql-client
 # Install additional useful tools
 echo "Installing additional useful tools..."
 $pkgm install -y tree ncdu
+
+# Install VirtualBox
+echo "Installing VirtualBox..."
+$pkgm install -y virtualbox
+
+# Install Vagrant
+echo "Installing Vagrant..."
+$pkgm install -y vagrant
+
+# Install Docker Compose
+echo "Installing Docker Compose..."
+$pkgm install -y docker-compose
+
+# Install Ansible
+echo "Installing Ansible..."
+$pkgm install -y ansible
+
+# Install Prometheus and Grafana
+echo "Installing Prometheus..."
+$pkgm install -y prometheus
+echo "Installing Grafana..."
+$pkgm install -y grafana
+
+# Install Postman
+echo "Installing Postman..."
+$pkgm install -y postman
+
+# Install Ngrok
+echo "Installing Ngrok..."
+$pkgm install -y ngrok
+
+# Install Firewall tools
+echo "Installing UFW..."
+$pkgm install -y ufw
+echo "Installing Fail2Ban..."
+$pkgm install -y fail2ban
+
+# Install Additional IDEs and Text Editors
+echo "Installing Visual Studio Code..."
+$pkgm install -y code
+
+# Install Additional Python Packages
+echo "Installing Flask..."
+pip3 install flask
+echo "Installing Django..."
+pip3 install django
+
+# Install Cloud CLI Tools
+echo "Installing AWS CLI..."
+$pkgm install -y awscli
+echo "Installing Azure CLI..."
+$pkgm install -y azure-cli
+echo "Installing Google Cloud SDK..."
+$pkgm install -y google-cloud-sdk
 
 # Complete
 echo "Setup completed!"
