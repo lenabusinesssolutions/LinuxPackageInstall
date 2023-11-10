@@ -28,7 +28,7 @@ pip3 install numpy pandas matplotlib scikit-learn
 
 # Install additional Python packages for ML and DL
 echo "Installing additional Python packages for machine learning and deep learning..."
-pip3 install tensorflow keras pytorch scikit-image opencv-python jupyterlab seaborn plotly xgboost lightgbm nltk spacy gensim
+pip3 install tensorflow keras torch torchvision torchaudio scikit-image opencv-python jupyterlab seaborn plotly xgboost lightgbm nltk spacy gensim notebook
 
 # Install Node.js
 echo "Installing Node.js..."
@@ -61,4 +61,3 @@ apt install -y tree ncdu
 
 # Complete
 echo "Setup completed!"
-
